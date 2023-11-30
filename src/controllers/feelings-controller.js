@@ -15,14 +15,13 @@ class FeelingsController extends EventEmitter {
 
   bindEvents() {
     this.dualSenseController.on("input", (ev) => {
-      console.log("🎮 me llego a los feels", ev);
-      if (ev.squareButton) {
-        this.handleSquareButton();
+      if (ev.crossButton) {
+        this.handleCrossButton();
       }
     });
   }
 
-  handleSquareButton() {
+  handleCrossButton() {
     this.emit("smile");
   }
 }

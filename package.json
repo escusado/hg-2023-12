@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/escusado/hg-2023-12/issues"
   },
-  "homepage": "https://github.com/escusado/hg-2023-12#readme"
+  "homepage": "https://github.com/escusado/hg-2023-12#readme",
+  "dependencies": {
+    "sdl2-gamecontroller": "^1.0.11"
+  }
 }

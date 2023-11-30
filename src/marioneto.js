@@ -18,12 +18,12 @@ class Marioneto {
   constructor() {
     console.log("🤖 Booting Marioneto... ");
     this.dualSenseController = new DualSenseController();
-    //this.appCompatibleDualsenseController = new AppCompatibleDualsenseController();
     this.oledController = new OledController();
     this.feelingsController = new FeelingsController();
   }
 
   setup() {
+    this.dualSenseController.setup();
     this.feelingsController.setup({
       dualSenseController: this.dualSenseController,
     });

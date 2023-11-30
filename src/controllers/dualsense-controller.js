@@ -1,5 +1,8 @@
 const EventEmitter = require("node:events");
 
+// mac development input handler uses sdl2
+const gamecontroller = require("sdl2-gamecontroller");
+
 const DualsenseDefaultEvent = {
   squareButton: false,
   circleButton: false,
@@ -10,18 +13,18 @@ const DualsenseDefaultEvent = {
 class DualSenseController extends EventEmitter {
   constructor() {
     console.log("🎮 DualsenseController Initiating...");
-
     super();
   }
 
-  // use this after succesfully parsin the controller input
-  handleInputReading() {
-    // TODO: transform parsed inputo to a readable format
-    const fakeInput = {
-      squareButton: true,
-    };
+  setup() {
+    this.bindEvents();
+  }
 
-    this.emit("input", { ...DualsenseDefaultEvent, ...fakeInput });
+  bindEvents() {
+    // this is exclusively for mac dev env, linux signals are different
+    gamecontroller.on("a:down", () =>
+      this.emit("input", { ...DualsenseDefaultEvent, crossButton: true })
+    );
   }
 }
 
